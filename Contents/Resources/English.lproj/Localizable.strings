@@ -1,0 +1,14 @@
+/* State and Keywordgroupnames */
+
+"CSS Attributes" = "Attributes";
+"CSS Keywords" = "Keywords";
+"CSS Digits" = "Digits";
+"CSS Colors" = "Colors";
+"AutodocComment" = "/*\" Comment \"*/";
+"Comment" = "/* Comment */";
+"SingleComment" = "// Comment";
+"String" = "\"Strings\"";
+"Inside curly brackets" = "{Inside curly brackets}";
+"Round bracket" = "(Inside parentheses)";
+"SingleString" = "'Strings'";
+"Mixins" = "Mixins";

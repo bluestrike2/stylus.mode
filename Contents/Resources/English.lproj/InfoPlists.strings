@@ -1,0 +1,6 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "Stylus";
+CFBundleShortVersionString = "";
+CFBundleGetInfoString = "0.0 via Tom Stoecklein/Vexea";
+NSHumanReadableCopyright = "© 2011 Tom Stoecklein. MIT License. (http://github.com/bluestrike2/Stylus).";

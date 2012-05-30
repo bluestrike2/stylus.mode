@@ -1,0 +1,90 @@
+@import 'nib'
+// comments, vars, mixins, functions, and what not
+$funkypurple = #bb8cdd
+$body = 100%
+prefix(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -o-{prop} args
+  {prop} args
+border-radius()
+  prefix('border-radius'), arguments)
+overload-padding = true
+box(x, y, margin = false)
+  padding y x
+  if margin
+    margin y x
+add(a, b)
+  a + b
+@font-face
+  font-family Geo
+  font-style normal
+  src url(fonts/geo_sans_light/GensansLight.ttf)
+.ingeo
+  font-family Geo
+.test
+  border-width 1em
+
+// more stuff
+body
+  @extends .ingeo
+  box(5px, 10px, true)
+  border-radius 5px 5px/10px 10px
+  font $body Helvetica, Arial, sans-serif
+  @media screen and (min-width: 55em)
+    font-size $body * 2
+  @media screen and (min-width: 55em) and (-webkit-min-device-pixel-ratio: 2)
+    color #333
+    // stuff
+    .logo
+      background url(../images/logo@2x.png) no-repeat 50% 50%  
+
+/*
+A button for fun button clicky-ness
+
+:hover     - a hover state
+.disabled  - bad button! bad!
+.gogo      - button becomes a gogo dancer because of daddy issues
+
+Styleguide 0.0.1.
+*/
+  
+a.button
+  @extends .test
+  border-radius 5px
+  color $funkypurple
+  font-size add(10px, 5)
+  &:hover
+    color #ccc
+  &.disabled
+    background #ccc
+  &.gogo
+    color #B8F084
+#header
+  height 10em
+  nav
+    background $funkypurple
+    
+@keyframes pulse
+  0%
+    background-color red
+    opacity 1.0
+    -webkit-transform scale(1.0) rotate(0deg)
+  33%
+    background-color blue
+    opacity 0.75
+    -webkit-transform scale(1.1) rotate(-5deg)
+  67%
+    background-color green
+    opacity 0.5
+    -webkit-transform scale(1.1) rotate(5deg)
+  100%
+    background-color red
+    opacity 1.0
+    -webkit-transform scale(1.0) rotate(0deg)
+
+@css {
+  body {
+    font: 14px;
+  }
+}
