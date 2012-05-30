@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <recognition>
+        <extension>styl</extension>
+        <extension>stylus</extension>
+    </recognition>
+</settings>
