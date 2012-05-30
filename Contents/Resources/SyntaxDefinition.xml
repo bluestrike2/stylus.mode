@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE syntax SYSTEM "syntax.dtd">
+<syntax>
+  <head>
+    <name>Stylus</name>
+    <charsintokens><![CDATA[_0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-@]]></charsintokens>
+    <charsincompletion><![CDATA[_0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-@]]></charsincompletion>
+  </head>
+  <states>
+    <default id="Base" scope="meta.default">
+
+      <!-- at rules -->
+      <keywords id="Rules" casesensitive="no" useforautocomplete="yes" scope="style.at-rule">
+        <string>@css</string>
+        <string>@font-face</string>
+        <string>@import</string>
+        <string>@keyframes</string>
+        <string>@media</string>
+        <string>@screen</string>
+        <string>@extend</string>
+        <string>@extends</string>
+      </keywords>
+      
+      <!-- variables -->
+      <keywords id="Variables" useforautocomplete="no" scope="language.variable.stylus">
+        <regex>(\$[\d\w\-]+)</regex>
+      </keywords>
+    
+      
+      <!-- comments -->
+      <state-link state="AutodocComment" mode="CSS" />
+      <state-link state="Comment" mode="CSS" />
+      <state id="SingleComment" type="comment" scope="style.comment.block">
+        <begin><regex>//</regex></begin>
+        <end><regex>[\n\r]</regex></end>
+      </state>
+
+
+    </default>
+  </states>
+</syntax>
