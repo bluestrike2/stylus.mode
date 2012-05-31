@@ -8,7 +8,7 @@ prefix(prop, args)
   -o-{prop} args
   {prop} args
 border-radius()
-  prefix('border-radius'), arguments)
+  prefix('border-radius', arguments)
 overload-padding = true
 box(x, y, margin = false)
   padding y x
@@ -48,7 +48,17 @@ A button for fun button clicky-ness
 
 Styleguide 0.0.1.
 */
-  
+a
+  display block
+#test
+  div
+    display block
+    div
+      display block
+  a
+    display inline
+  .test2
+    display block
 a.button
   @extends .test
   border-radius 5px
