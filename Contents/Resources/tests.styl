@@ -2,13 +2,15 @@
 // comments, vars, mixins, functions, and what not
 $funkypurple = #bb8cdd
 $body = 100%
-
 prefix(prop, args)
   -webkit-{prop} args
   -moz-{prop} args
   -o-{prop} args
   {prop} args
+test()
+	display block
 border-radius()
+	test(testdk)
   prefix('border-radius', arguments)
 overload-padding = true
 box(x, y, margin = false)
@@ -21,11 +23,11 @@ add(a, b)
   font-family Geo
   font-style normal
   src url(fonts/geo_sans_light/GensansLight.ttf)
+  box()
 .ingeo
   font-family Geo
 .test
   border-width 1em
-
 
 // more stuff
 body

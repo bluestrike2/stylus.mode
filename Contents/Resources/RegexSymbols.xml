@@ -6,55 +6,71 @@
 		<endregex>}</endregex>
 	</blocks>
 
-	<!-- CODA - added support for comments after delarations before { -->
-<!--
-	<symbol id="Tags" image="SymbolT">
-		<regex>(?&lt;=[\n\r]|^)[\t ]*([:\w\*][\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+	<symbol id="Rules" image="SymbolAt">
+		<regex>(@(font-face|keyframes|css).*)</regex>
 		<postprocess>
-			<find>[\n\r]</find>
-			<replace> </replace>
-			<find>[ \t]+</find>
-			<replace> </replace>
-			<find>/\*.*\*/</find>
+			<find>(\{|\(|\)|'|")</find>
 			<replace></replace>
 		</postprocess>
 	</symbol>
-
-	<symbol id="Classes" image="SymbolC">
-		<regex>(?&lt;=[\n\r]|^)[\t ]*(\.[\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+	<symbol id="Rules/Media" image="SymbolM-yellow">
+		<regex>(@(media).*)</regex>
+		<postprocess>
+			<find>(and\s|\(|\)|'|")</find>
+			<replace></replace>
+			<find>(-(webkit|moz)-min-device-pixel-ratio: 2)</find>
+			<replace>retina</replace>
+		</postprocess>
+	</symbol>
+	<symbol id="Rules/Import" image="SymbolImport.png">
+		<regex>(@(import).*)</regex>
+		<postprocess>
+			<find>('|")</find>
+			<replace></replace>
+		</postprocess>
+	</symbol>
+	
+	<symbol id="HTML Elements" image="SymbolT">
+		<regex>(?&lt;=[\n\r]|^)\b(a|abbr|acronym|address|area|article|aside|audio|b|base|big|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|eventsource|fieldset|figure|figcaption|footer|form|frame|frameset|(h[1-6])|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|map|mark|menu|meta|meter|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|samp|script|section|select|small|span|strike|strong|style|sub|summary|sup|table|tbody|td|textarea|tfoot|th|thead|time|title|tr|tt|ul|var|video)\b</regex>
 		<postprocess>
 			<find>[\n\r]</find>
 			<replace> </replace>
 			<find>[ \t]+</find>
 			<replace> </replace>
-			<find>/\*.*\*/</find>
-			<replace></replace>
 		</postprocess>
 	</symbol>
 	
 	<symbol id="IDs" image="SymbolID">
-		<regex>(?&lt;=[\n\r]|^)[\t ]*(#[\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+		<regex>(?&lt;=[\n\r]|^)\#[a-zA-Z0-9\-\_\.]+</regex>
 		<postprocess>
 			<find>[\n\r]</find>
 			<replace> </replace>
 			<find>[ \t]+</find>
 			<replace> </replace>
-			<find>/\*.*\*/</find>
-			<replace></replace>
 		</postprocess>
 	</symbol>
 	
-	<symbol id="Rules" image="SymbolAt">
-		<regex>(?&lt;=[\n\r]|^)[\t ]*((?i)@(media|import))\s+([\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+	<symbol id="Classes" image="SymbolC">
+		<regex>(?&lt;=[\n\r]|^)\.[a-zA-Z0-9\-\_\.]+</regex>
 		<postprocess>
 			<find>[\n\r]</find>
 			<replace> </replace>
 			<find>[ \t]+</find>
 			<replace> </replace>
-			<find>/\*.*\*/</find>
+		</postprocess>
+	</symbol>
+	
+	<symbol id="Mixins" image="SymbolMark">
+		<regex>(?&lt;=[\n\r]|^)[a-zA-Z0-9\-\_\.]+(?=\()</regex>
+		<postprocess>
+			<find>[\n\r]</find>
+			<replace> </replace>
+			<find>[ \t]+</find>
+			<replace> </replace>
+			<find>\(</find>
 			<replace></replace>
 		</postprocess>
-	</symbol> -->
+	</symbol>
 	
 	<!-- CODA changed to CSS style comments, and changed image to SymbolMark -->
 	<symbol id="Pragma marks" font-weight="normal" font-style="normal" image="SymbolMark" indentation="0" ignoreblocks="no" show-in-comments="yes">
