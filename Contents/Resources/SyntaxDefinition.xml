@@ -7,7 +7,15 @@
     <charsincompletion><![CDATA[_0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-@]]></charsincompletion>
   </head>
   <states>
-    <default id="Base" scope="meta.default">
+    <default id="Base" scope="meta.default.stylus">
+    	<!-- comments -->
+      <state-link state="AutodocComment" mode="CSS" />
+      <state-link state="Comment" mode="CSS" />
+      <state id="SingleComment" type="comment" scope="style.comment.block">
+        <begin><regex>//</regex></begin>
+        <end><regex>[\n\r]</regex></end>
+      </state>
+
     	<!-- strings -->
       <state-link state="String" mode="CSS" />
       <state-link state="SingleString" mode="CSS" />
@@ -16,23 +24,22 @@
       <keywords id="Rules" casesensitive="no" useforautocomplete="yes" scope="style.at-rule.stylus">
         <regex>(@)\b(css|font-face|import|keyframes|media|screen)\b</regex>
       </keywords>
-      <keywords id="Rules" casesensitive="no" useforautocomplete="yes" scope="style.at-rule.extend.stylus">
+      <keywords id="Rules/Nested" casesensitive="no" useforautocomplete="yes" scope="style.at-rule-nested.stylus">
         <regex>(@)\b(extend|extends)\b</regex>
       </keywords>
 
       <!-- operators -->
       <keywords id="Operators" casesensitive="no" useforautocomplete="no" scope="language.operator.stylus">
-      	<regex>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|(?:=|:=|\?|\?:|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|\b(?:in|is(?:nt)?|not)\b)</regex> 
+      	<regex>((?:!|~|\+|-|(?:\*)?\*|\/|\s%\s|(?:\.)\.\.|&lt;|&gt;|(?:=|:=|\?|\?:|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|\b(?:in|is(?:nt)?|not)\b)</regex>
       </keywords>
-      
+
       <!-- control keywords -->
       <keywords id="Control Keywords" useforautocomplete="yes" scope="keyword.control">
       	<regex>\b(!important|for|in|return|true|false|null|if|else|unless|return|screen|mobile|print)\b</regex>
       </keywords>
 
-      <!-- TODO: built-in functions -->
       <!-- TODO: additional nib stuff -->
-      
+
       <!-- property values/attributes -->
       <keywords id="Property Values" useforautocomplete="yes" scope="style.value.keyword.stylus">
 	      <regex>\b(absolute|all(-scroll)?|always|armenian|auto|avoid|baseline|below|bidi-override|block|bold|bolder|border-box|both|bottom|break-all|break-word|capitalize|center|char|circle|cjk-ideographic|col-resize|collapse|content-box|crosshair|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|left|lighter|line-edge|line-through|line|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|padding-box|pointer|pre(-(wrap|line))?|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|sub|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|zero|smaller|larger|((xx?-)?(small|large))|painted|fill|stroke)\b</regex>
@@ -60,23 +67,18 @@
       <keywords id="Properties" useforautocomplete="yes" scope="style.property.name">
         <regex>\b(alignment-adjust|alignment-baseline|animation-delay|animation-direction|animation-duration|animation-iteration-count|animation-name|animation-play-state|animation-timing-function|animation|appearance|azimuth|backface-visibility|background-attachment|background-clip|background-color|background-image|background-origin|background-position|background-repeat|background-size|background|baseline-shift|binding|bleed|bookmark-label|bookmark-level|bookmark-state|bookmark-target|border-bottom-color|border-bottom-left-radius|border-bottom-right-radius|border-bottom-style|border-bottom-width|border-bottom|border-collapse|border-color|border-image-outset|border-image-repeat|border-image-slice|border-image-source|border-image-width|border-image|border-left-color|border-left-style|border-left-width|border-left|border-radius|border-right-color|border-right-style|border-right-width|border-right|border-spacing|border-style|border-top-color|border-top-left-radius|border-top-right-radius|border-top-style|border-top-width|border-width|border-top|border|bottom|box-decoration-break|box-shadow|box-sizing|break-after|break-before|break-inside|caption-side|clear|clip|color-profile|color|column-count|column-fill|column-gap|column-rule-color|column-rule-style|column-rule-width|column-rule|column-span|column-width|columns|content|counter-increment|counter-reset|crop|cue-after|cue-before|cue|cursor|direction|display|dominant-baseline|drop-initial-after-adjust|drop-initial-after-align|drop-initial-before-adjust|drop-initial-before-align|drop-initial-size|drop-initial-value|elevation|empty-cells|fit-position|fit|flex-align|flex-flow|flex-line-pack|flex-order|flex-pack|float-offset|float|font-family|font-size-adjust|font-size|font-stretch|font-style|font-variant|font-weight|font|grid-columns|grid-rows|hanging-punctuation|height|hyphenate-after|hyphenate-before|hyphenate-character|hyphenate-lines|hyphenate-resource|hyphens|icon|image-orientation|image-rendering|image-resolution|inline-box-align|left|letter-spacing|line-break|line-height|line-stacking-ruby|line-stacking-shift|line-stacking-strategy|line-stacking|list-style-image|list-style-position|list-style-type|list-style|margin-bottom|margin-left|margin-right|margin-top|margin|marker-offset|marks|marquee-direction|marquee-loop|marquee-play-count|marquee-speed|marquee-style|max-height|max-width|min-height|min-width|move-to|nav-down|nav-index|nav-left|nav-right|nav-up|opacity|orphans|outline-color|outline-offset|outline-style|outline-width|outline|overflow-style|overflow-wrap|overflow-x|overflow-y|overflow|padding-bottom|padding-left|padding-right|padding-top|padding|page-break-after|page-break-before|page-break-inside|page-policy|page|pause-after|pause-before|pause|perspective-origin|perspective|phonemes|pitch-range|pitch|play-during|position|presentation-level|punctuation-trim|quotes|rendering-intent|resize|rest-after|rest-before|rest|richness|right|rotation-point|rotation|ruby-align|ruby-overhang|ruby-position|ruby-span|size|speak-header|speak-numeral|speak-punctuation|speak|speech-rate|stress|string-set|src|tab-size|table-layout|target-name|target-new|target-position|target|text-align-last|text-align|text-decoration-color|text-decoration-line|text-decoration-skip|text-decoration-style|text-decoration|text-emphasis-color|text-emphasis-position|text-emphasis-style|text-emphasis|text-height|text-indent|text-justify|text-outline|text-shadow|text-space-collapse|text-transform|text-underline-position|text-wrap|top|transform-origin|transform-style|transform|transition-delay|transition-duration|transition-property|transition-timing-function|transition|unicode-bidi|vertical-align|visibility|voice-balance|voice-duration|voice-family|voice-pitch-range|voice-pitch|voice-rate|voice-stress|voice-volume|volume|white-space|widows|width|word-break|word-spacing|word-wrap|z-index)\b</regex>
         <regex>(-webkit-|-khtml-|-moz-|-o-|-ms-)</regex>
+        <regex>(\{[a-zA-Z0-9\-\_\.]+\})</regex>
       </keywords>
 
-      <!-- colors + numbers -->
-      <keywords id="CSS Digits" useforautocomplete="no" scope="style.value.numeric">
-        <regex>(?&lt;![#\d\w-])(-?[\d]+[ \t]*(?:px|pt|em|rem|ex|cm|in|mm|pc|s|ms|Hz|kHz|%|deg|rad|grad|turn)?)</regex>
-      </keywords>
+      <!-- colors & constants -->
       <keywords id="CSS Colors" useforautocomplete="no" scope="style.value.color.rgb-value">
         <regex>(#[\da-fA-F]{3,6})</regex>
       </keywords>
-      <!-- todo: rgb/rgba/hsl/hsla awesomeness -->
-      
-      <!-- miscellaneous constants -->
       <keywords id="Color Constants" useforautocomplete="yes" scope="style.value.keyword">
-      	<regex>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</regex>
+      	<regex>\b(?i:(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow))\b</regex>
       </keywords>
-      <keywords id="Typeface Constants" useforautocomplete="yes" scope="style.value.keyword.">
-      	<regex>\b(?i:arial|century|comic|courier|garamond|georgia|helvetica|helvetica neue|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\b</regex>
+      <keywords id="Typeface Constants" useforautocomplete="yes" scope="style.value.keyword">
+      	<regex>\b(?i:(arial|century|comic|courier|garamond|georgia|helvetica|helvetica\sneue|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace))\b</regex>
       </keywords>
 
       <!-- variables -->
@@ -87,21 +89,71 @@
         <regex>(\@[\d\w\-]+)</regex>
       </keywords>
 
-      <!-- mixins -->
+      <!-- functions: mixins/bifs/etc. -->
       <keywords id="Mixin - as a property" useforautocomplete="no" type="string" scope="style.property.name.mixin.stylus">
       	<regex>([a-zA-Z0-9\-\_\.]+(?=\())</regex>
       </keywords>
-      <keywords id="Mixin - definition" useforautocomplete="no" type="string" scope="style.selector.name.mixin.stylus">
+      <keywords id="Function Definition" useforautocomplete="no" type="string" scope="style.selector.name.mixin.stylus">
       	<regex>([\n\r][a-zA-Z0-9\-\_\.]+(?=\())</regex>
       </keywords>
-
-      <!-- comments -->
-      <state-link state="AutodocComment" mode="CSS" />
-      <state-link state="Comment" mode="CSS" />
-      <state id="SingleComment" type="comment" scope="style.comment.block">
-        <begin><regex>//</regex></begin>
-        <end><regex>[\n\r]</regex></end>
-      </state>
+      <keywords id="BIFs" useforautocomplete="no" type="string" scope="style.value.keyword.stylus">
+      	<regex>(url\([^\)]*\))</regex>
+				<regex>(red\([^\)]*\))</regex>
+				<regex>(green\([^\)]*\))</regex>
+				<regex>(blue\([^\)]*\))</regex>
+				<regex>(alpha\([^\)]*\))</regex>
+				<regex>(dark\([^\)]*\))</regex>
+				<regex>(darken\([^\)]*\))</regex>
+				<regex>(light\([^\)]*\))</regex>
+				<regex>(lighten\([^\)]*\))</regex>
+				<regex>(hue\([^\)]*\))</regex>
+				<regex>(saturation\([^\)]*\))</regex>
+				<regex>(lightness\([^\)]*\))</regex>
+				<regex>(push\([^\)]*\))</regex>
+				<regex>(append\([^\)]*\))</regex>
+				<regex>(unshift\([^\)]*\))</regex>
+				<regex>(prepend\([^\)]*\))</regex>
+				<regex>(keys\([^\)]*\))</regex>
+				<regex>(values\([^\)]*\))</regex>
+				<regex>(typeof\([^\)]*\))</regex>
+				<regex>(type-of\([^\)]*\))</regex>
+				<regex>(type\([^\)]*\))</regex>
+				<regex>(unit\([^\)]*\))</regex>
+				<regex>(match\([^\)]*\))</regex>
+				<regex>(abs\([^\)]*\))</regex>
+				<regex>(ceil\([^\)]*\))</regex>
+				<regex>(floor\([^\)]*\))</regex>
+				<regex>(round\([^\)]*\))</regex>
+				<regex>(min\([^\)]*\))</regex>
+				<regex>(max\([^\)]*\))</regex>
+				<regex>(even\([^\)]*\))</regex>
+				<regex>(odd\([^\)]*\))</regex>
+				<regex>(sum\([^\)]*\))</regex>
+				<regex>(avg\([^\)]*\))</regex>
+				<regex>(join\([^\)]*\))</regex>
+				<regex>(hsla\([^\)]*\))</regex>
+				<regex>(desaturate\([^\)]*\))</regex>
+				<regex>(saturate\([^\)]*\))</regex>
+				<regex>(invert\([^\)]*\))</regex>
+				<regex>(unquote\([^\)]*\))</regex>
+				<!--<regex>(s\([^\)]*\))</regex>-->
+				<regex>(operate\([^\)]*\))</regex>
+				<regex>(length\([^\)]*\))</regex>
+				<regex>(warn\([^\)]*\))</regex>
+				<regex>(error\([^\)]*\))</regex>
+				<regex>(last\([^\)]*\))</regex>
+				<regex>(p\([^\)]*\))</regex>
+				<regex>(opposite-position\([^\)]*\))</regex>
+				<regex>(image-size\([^\)]*\))</regex>
+				<regex>(add-property\([^\)]*\))</regex>
+				<regex>(replace\([^\)]*\))</regex>
+				<regex>(stop\([^\)]*\))</regex>
+      </keywords>
+      
+      <!-- digits -->
+      <keywords id="CSS Digits" useforautocomplete="no" scope="style.value.numeric">
+        <regex>(?&lt;![#\d\w-])(-?[\d]+[ \t]*(?:px|pt|em|rem|ex|cm|in|mm|pc|s|ms|Hz|kHz|%|deg|rad|grad|turn)?)</regex>
+      </keywords>
 
     </default>
   </states>
